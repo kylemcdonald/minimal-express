@@ -4,9 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "forever start --uid \"app\" -a -c nodemon app.js --watch .env --exitcrash",
-    "stop": "forever stop app",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "forever start --uid \"app\" -a -c nodemon app.js --exitcrash",
+    "stop": "forever stop app"
   },
   "author": "Kyle McDonald",
   "license": "MIT",
