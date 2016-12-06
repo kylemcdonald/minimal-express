@@ -14,6 +14,17 @@ Additional things that would make things more like using Heroku:
 - Web interface for starting/stopping.
 - Web interface for changing .env
 
+## POST file uploading example
+
+To test this from the command line, try:
+
+```
+$ curl \
+	-F "email=user@server.com" \
+	-F "image=@directory/filename.jpg" \
+	localhost:3000/upload
+```
+
 ## Installation
 
 ```
