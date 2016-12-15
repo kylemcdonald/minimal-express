@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "forever start --uid \"app\" -a -c nodemon --ignore cookies app.js --exitcrash",
-    "stop": "forever stop app"
+    "start": "nodemon --ignore cookies app.js"
   },
   "author": "Kyle McDonald",
   "license": "MIT",

@@ -9,7 +9,7 @@ var storage = new Client.CookieFileStorage(__dirname + '/cookies/' + process.env
 var session;
 Client.Session.create(device, storage, process.env.USERNAME, process.env.PASSWORD)
     .then(function(s) {
-    	session = s;
+        session = s;
         console.log('Logged in to Instagram with username ' + process.env.USERNAME);
     })
 
@@ -20,22 +20,22 @@ app.use('/', express.static('public'));
 
 // send an error if the instagram session is unavailable
 app.use(function (req, res, next) {
-	if(typeof(session) === 'undefined') {
-		res.sendStatus(500);
-	} else {
-		next();
-	}
+    if(typeof(session) === 'undefined') {
+        res.sendStatus(500);
+    } else {
+        next();
+    }
 })
 
 app.get('/latest', function (req, res) {
-	var query = req.query;
-	if(typeof(query.tag) === undefined) {
-		res.sendStatus(500);
-		return;
-	}
-	if(typeof(query.limit) === undefined) {
-		query.limit = 10;
-	}
+    var query = req.query;
+    if(typeof(query.tag) === undefined) {
+        res.sendStatus(500);
+        return;
+    }
+    if(typeof(query.limit) === undefined) {
+        query.limit = 10;
+    }
     var feed = new Client.Feed.TaggedMedia(session, query.tag);
     var page = feed.get();
     page.then(function(media) {
@@ -44,12 +44,12 @@ app.get('/latest', function (req, res) {
             var params = cur._params;
             var account = cur.account._params;
             return {
-            	'code': params.code,
-            	'takenAt': params.takenAt,
-            	'caption': params.caption,
-            	'url': params.images[0].url,
-            	'fullName': account.fullName,
-            	'username': account.username
+                'code': params.code,
+                'takenAt': params.takenAt,
+                'caption': params.caption,
+                'url': params.images[0].url,
+                'fullName': account.fullName,
+                'username': account.username
             };
         });
         res.send(compiled);
@@ -57,7 +57,7 @@ app.get('/latest', function (req, res) {
 });
 
 var server = app.listen(process.env.PORT || 3000, function () {
-	var host = server.address().address;
-	var port = server.address().port;
-	console.log('Example app listening at http://%s:%s', host, port);
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log('Example app listening at http://%s:%s', host, port);
 });
