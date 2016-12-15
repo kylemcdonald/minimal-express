@@ -1,3 +1,6 @@
+var dotenv = require('dotenv');
+dotenv.load();
+
 var _ = require('lodash');
 var Promise = require('bluebird');
 var Client = require('instagram-private-api').V1;
