@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js"></script>
+    <script src="gyro.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body><!-- 
+  	<div id="debug">
+  		<span id="x"></span>/
+  		<span id="y"></span>/
+  		<span id="z"></span>
+  	</div> -->
+    <script src="sketch.js"></script>
+	<script>
+	gyro.frequency = 4.;
+	var smoothed = {
+		x: 0,
+		y: 0,
+		z: 0
+	};
+	var smoothingRate = 0.1;
+	gyro.startTracking(function (o) {
+		smoothed.x = lerp(smoothed.x, o.x, smoothingRate);
+		smoothed.y = lerp(smoothed.y, o.y, smoothingRate);
+		smoothed.z = lerp(smoothed.z, o.z, smoothingRate);
+	});
+	</script>
+  </body>
+</html>
